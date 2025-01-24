@@ -103,15 +103,15 @@ git push --set-upstream origin main
     Reopening the Dev Container step is crucial since it activates the desired Dev Container environment. Here it is the Rust environment. 
 
 ## Part 3: Creating Your Rust Project:
-1. In the terminal below you should see the Rust version. Next we need to create our Rust Project. In ther terminal type the following code:
+1. In the terminal below you should see the Rust version. Next we need to create our Rust Project. In the terminal type the following code:
 ```
 cargo new hello-comp423 –vcs none
 cd hello-comp423
 ```
 2. Navigate to the `src/main.rs` file and open it. Change the contents of the `println` function to say “Hello COMP423”
 3. To print the contents there are two methods:
-  * Use `cargo build` in the terminal. This compiles an executable file but does not run it. To run it do `./target/debug/main`. Note this is similar to using C in COMP 211 and running `gcc project-name` and it creates the executable a.out and to run the file you must type `./a.out`. The `cargo build` command is the compile part (`gcc project-name`) and using the ./ at the file location runs it.
-  * Alternatively, the command `cargo run` (in terminal) does both in one step simplifying the process.
+    * Use `cargo build` in the terminal. This compiles an executable file but does not run it. To run it do `./target/debug/main`. Note this is similar to using C in COMP 211 and running `gcc project-name` and it creates the executable a.out and to run the file you must type `./a.out`. The `cargo build` command is the compile part (`gcc project-name`) and using the ./ at the file location runs it.
+    * Alternatively, the command `cargo run` (in terminal) does both in one step simplifying the process.
 
 Congratulations you now have a working Dev Container to create a Rust Project in!
 Many parts of this tutorial are inspired by Kris Jordan’s [Starting a Static Website Project with MkDocs](https://comp423-25s.github.io/resources/MkDocs/tutorial/#what-is-a-development-dev-container).
