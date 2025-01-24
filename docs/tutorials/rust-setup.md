@@ -64,6 +64,10 @@ git push --set-upstream origin main
 4.  Back in your web browser, refresh your GitHub repository to see that the same commit you made locally has now been pushed to remote. You can use git log locally to see the commit ID and message which should match the ID of the most recent commit on GitHub. This is the result of pushing your changes to your remote repository.
 
 ## Part 2: Setting Up Your Dev Container:
+
+!!! note "What is a Dev Container?"
+    A Dev Container ensures that your development process is consistent across different machines. This becomes super important when working in teams. Creating Dev Containers is a way to fix the “It Doesn’t Work on my Machine” problem. It also simplifies onboarding new people to a project. Docker comes into play by specifying a specific image to set up the development environment. The steps below essentially automate the process of setting up a Dev Container.
+
 ### Step 1: Add Dev Container Configurations:
 1. In Visual Studio Code, open the `rust-project` directory. Do this by clicking File > Open Folder.
 2. Install the **Dev Containers** extension for VS Code. This is located on the left column.
@@ -90,7 +94,24 @@ git push --set-upstream origin main
     Customization: installs the rust extension. 
 
     PostCreateCommand: a command to run after container is created, here it shows the latest rust version.
-### Step 2: Reopen the Project in Dev Container:
-1. Press Ctrl + Shift + P (Cmd + Shift + P for mac) then type Dev Containers: Reopen in Container.
-2. You should see the Rust version at the bottom (1.84 is the latest one).
+### Step 2: Reopen the Project in a Dev Container:
+
+1. Press Ctrl + Shift + P (Cmd + Shift + P for mac) then type "Dev Containers: Reopen in Container".
+2. You should see the latest Rust version at the bottom in terminal.
+
+!!! note "Dev Containers: Reopen in Container"
+    Reopening the Dev Container step is crucial since it activates the desired Dev Container environment. Here it is the Rust environment. 
+
 ## Part 3: Creating Your Rust Project:
+1. In the terminal below you should see the Rust version. Next we need to create our Rust Project. In ther terminal type the following code:
+```
+cargo new hello-comp423 –vcs none
+cd hello-comp423
+```
+2. Navigate to the `src/main.rs` file and open it. Change the contents of the `println` function to say “Hello COMP423”
+3. To print the contents there are two methods:
+  * Use `cargo build` in the terminal. This compiles an executable file but does not run it. To run it do `./target/debug/main`. Note this is similar to using C in COMP 211 and running `gcc project-name` and it creates the executable a.out and to run the file you must type `./a.out`. The `cargo build` command is the compile part (`gcc project-name`) and using the ./ at the file location runs it.
+  * Alternatively, the command `cargo run` (in terminal) does both in one step simplifying the process.
+
+Congratulations you now have a working Dev Container to create a Rust Project in!
+Many parts of this tutorial are inspired by Kris Jordan’s [Starting a Static Website Project with MkDocs](https://comp423-25s.github.io/resources/MkDocs/tutorial/#what-is-a-development-dev-container).
