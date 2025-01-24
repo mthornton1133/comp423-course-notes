@@ -1,6 +1,6 @@
 # Setting up a Dev Container for Rust
 
-* Primary author: [Matthew Thornton](https://github.com/mthornton1133)
+* Primary Author: [Matthew Thornton](https://github.com/mthornton1133)
 * Reviewer: [Anish Parepalli](https://github.com/apcodes)
 
 ## Prerequisites
@@ -61,7 +61,7 @@ git remote add origin https://github.com/<your-username>/rust-project.git
 ```
 git push --set-upstream origin main
 ```
-4.  Back in your web browser, refresh your GitHub repository to see that the same commit you made locally has now been pushed to remote. You can use git log locally to see the commit ID and message which should match the ID of the most recent commit on GitHub. This is the result of pushing your changes to your remote repository.
+4.  Back in your web browser, refresh your GitHub repository to see that the same commit you made locally has now been pushed to remote. You can use `git log` locally to see the commit ID and message which should match the ID of the most recent commit on GitHub. This is the result of pushing your changes to your remote repository.
 
 ## Part 2: Setting Up Your Dev Container:
 
@@ -75,15 +75,15 @@ git push --set-upstream origin main
 4. Place the following code inside this newly created file: 
 ```
 {
- "name": "Rust Project”,
- "image": "mcr.microsoft.com/devcontainers/rust:latest",
- "customizations": {
-   "vscode": {
-     "settings": {},
-     "extensions": [“rust-lang.rust-analyzer”]
-   }
- },
- "postCreateCommand": "rustc --version"
+    "name": "Rust Project",
+    "image": "mcr.microsoft.com/devcontainers/rust:latest",
+    "customizations": {
+      "vscode": {
+        "settings": {},
+        "extensions": ["rust-lang.rust-analyzer"]
+      }
+    },
+    "postCreateCommand": "rustc --version"
 }
 ```
 !!! note "What does this code do?"
@@ -98,20 +98,26 @@ git push --set-upstream origin main
 
 1. Press Ctrl + Shift + P (Cmd + Shift + P for mac) then type "Dev Containers: Reopen in Container".
 2. You should see the latest Rust version at the bottom in terminal.
+3. If you would like you can type `rustc --version` and this will show you the version of Rust you are using in the terminal.
 
 !!! note "Dev Containers: Reopen in Container"
     Reopening the Dev Container step is crucial since it activates the desired Dev Container environment. Here it is the Rust environment. 
 
 ## Part 3: Creating Your Rust Project:
-1. In the terminal below you should see the Rust version. Next we need to create our Rust Project. In the terminal type the following code:
+1. Next we need to create our Rust Project. In the terminal type the following code:
 ```
 cargo new hello-comp423 --vcs none
 cd hello-comp423
 ```
-2. Navigate to the `src/main.rs` file and open it. Change the contents of the `println` function to say “Hello COMP423”
+2. The previous code created our rust project without creating it's VCS and then we switch into this newly created project. Navigate to the `src/main.rs` file and open it. Change the contents of the `println` function to say “Hello COMP423”
 3. To print the contents there are two methods:
-    * Use `cargo build` in the terminal. This compiles an executable file but does not run it. To run it do `./target/debug/main`. Note this is similar to using C in COMP 211 and running `gcc project-name` and it creates the executable a.out and to run the file you must type `./a.out`. The `cargo build` command is the compile part (`gcc project-name`) and using the ./ at the file location runs it.
-    * Alternatively, the command `cargo run` (in terminal) does both in one step simplifying the process.
-
-Congratulations you now have a working Dev Container to create a Rust Project in!
+    * Use `cargo build` in the terminal. This compiles an executable file but does not run it. To run it do `./target/debug/hello-comp423`. Note this is similar to using C in COMP 211 and running `gcc project-name` and it creates the executable a.out and to run the file you must type `./a.out`. The `cargo build` command is the compile part (`gcc project-name`) and using the ./ at the file location runs it.
+    * Alternatively, the command `cargo run` (in terminal) does both in one step simplifying the process. Both ways will print "Hello COMP423" in the terminal.
+4. If you would like to save changes simply follow the git basics. The commands below pushes your changes so you can view them on GitHub:
+```
+git add .
+git commit -m "Followed Rust Tutorial and can print a line"
+git push -u origin main
+```
+Congratulations you now have a working Dev Container to create a Rust Project in and have now written a program in a modern language!
 Many parts of this tutorial are inspired by Kris Jordan’s [Starting a Static Website Project with MkDocs](https://comp423-25s.github.io/resources/MkDocs/tutorial/#what-is-a-development-dev-container).
