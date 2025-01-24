@@ -1,4 +1,4 @@
-# Setting up a dev container for Rust
+# Setting up a Dev Container for Rust
 
 * Primary author: [Matthew Thornton](https://github.com/mthornton1133)
 * Reviewer: [Anish Parepalli](https://github.com/apcodes)
@@ -48,8 +48,8 @@ git commit -m "Initialized with a README"
     * **Repository Name**: rust-project
     * **Description**: “A starter project for learning the Rust programming language”
     * **Visibility**: Public
-3. **Do not** initialize the project with a README, .gitignore, or license
-4. Click Create Repository
+3. **Do not** initialize the project with a README, .gitignore, or license.
+4. Click Create Repository.
 
 ### Step 3: Link your Local Repo to GitHub:
 1. Add GitHub repo as remote, replace your-username with your actual GitHub username:
@@ -92,5 +92,5 @@ git push --set-upstream origin main
     PostCreateCommand: a command to run after container is created, here it shows the latest rust version.
 ### Step 2: Reopen the Project in Dev Container:
 1. Press Ctrl + Shift + P (Cmd + Shift + P for mac) then type Dev Containers: Reopen in Container.
-2. You should see the rust version at the bottom (1.84 is the latest one).
+2. You should see the Rust version at the bottom (1.84 is the latest one).
 ## Part 3: Creating Your Rust Project:
