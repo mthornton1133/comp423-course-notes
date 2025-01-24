@@ -16,3 +16,81 @@ Before starting there are some required prerequisites that you must have:
 
 
 ## Part 1: Project Setup: Creating a Repo
+### Step 1: Create a Local Directory and Initialize Git
+
+1. Open you terminal/command prompt.
+2. Create a New Directory for your project, you can name this whatever you like:
+```
+mkdir rust-project
+cd rust-project
+```
+3. Initialize a git repo:
+
+```
+git init
+```
+
+!!! note "What does git init do?"
+    git init initializes a folder as an empty git repository. This basically adds a "hidden" .git folder that houses everything a git repo needs.
+
+4. Create a README.md File:
+```
+echo "# Rust Starter Project" > README.md
+echo "# Tutorial Link [Here](https://mthornton1133.github.io/comp423-course-notes/tutorials/rust-setup/)" >> README.md
+git add README.md
+git commit -m "Initialized with a README"
+```
+!!! note
+    The first echo makes the README with the title Rust Starter Project and the second provides a link back to this tutorial. The second part stages and commits your changes.
+### Step 2: Create a Remote GitHub Repo:
+1. Log into your GitHub account and navigate to the [Create a New Repository](https://github.com/new) page.
+2. Fill in the following details:
+    * **Repository Name**: rust-project
+    * **Description**: “A starter project for learning the Rust programming language”
+    * **Visibility**: Public
+3. **Do not** initialize the project with a README, .gitignore, or license
+4. Click Create Repository
+
+### Step 3: Link your Local Repo to GitHub:
+1. Add GitHub repo as remote, replace your-username with your actual GitHub username:
+```
+git remote add origin https://github.com/<your-username>/rust-project.git
+```
+2. Check your default branch name with the subcommand git branch. If it's not main, rename it to main with the following command: `git branch -M main`. Old versions of git choose the name master for the primary branch, but these days main is the standard primary branch name.
+3. Push your local commits to the GitHub repository:
+```
+git push --set-upstream origin main
+```
+4.  Back in your web browser, refresh your GitHub repository to see that the same commit you made locally has now been pushed to remote. You can use git log locally to see the commit ID and message which should match the ID of the most recent commit on GitHub. This is the result of pushing your changes to your remote repository.
+
+## Part 2: Setting Up Your Dev Container:
+### Step 1: Add Dev Container Configurations:
+1. In Visual Studio Code, open the `rust-project` directory. Do this by clicking File > Open Folder.
+2. Install the **Dev Containers** extension for VS Code. This is located on the left column.
+3. Create a `.devcontainer` directory in the root of your project with the following file inside this “hidden” directory: `.devcontainer/devcontainer.json`
+4. Place the following code inside this newly created file: 
+```
+{
+ "name": "Rust Project”,
+ "image": "mcr.microsoft.com/devcontainers/rust:latest",
+ "customizations": {
+   "vscode": {
+     "settings": {},
+     "extensions": [“rust-lang.rust-analyzer”]
+   }
+ },
+ "postCreateCommand": "rustc --version"
+}
+```
+!!! note "What does this code do?"
+    Name: is a descriptive name for our dev container.
+
+    Image: The docker image to use, here it is the latest rust environment. 
+
+    Customization: installs the rust extension. 
+
+    PostCreateCommand: a command to run after container is created, here it shows the latest rust version.
+### Step 2: Reopen the Project in Dev Container:
+1. Press Ctrl + Shift + P (Cmd + Shift + P for mac) then type Dev Containers: Reopen in Container.
+2. You should see the rust version at the bottom (1.84 is the latest one).
+## Part 3: Creating Your Rust Project:
