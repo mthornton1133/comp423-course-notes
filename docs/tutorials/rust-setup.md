@@ -105,7 +105,7 @@ git push --set-upstream origin main
 ## Part 3: Creating Your Rust Project:
 1. In the terminal below you should see the Rust version. Next we need to create our Rust Project. In the terminal type the following code:
 ```
-cargo new hello-comp423 –vcs none
+cargo new hello-comp423 --vcs none
 cd hello-comp423
 ```
 2. Navigate to the `src/main.rs` file and open it. Change the contents of the `println` function to say “Hello COMP423”
