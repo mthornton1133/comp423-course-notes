@@ -18,15 +18,15 @@ Before starting there are some required prerequisites that you must have:
 ## Part 1: Project Setup: Creating a Repo
 ### Step 1: Create a Local Directory and Initialize Git
 
-1. Open you terminal/command prompt.
+1. Open your terminal/command prompt.
 2. Create a New Directory for your project, you can name this whatever you like:
-```
+```bash
 mkdir rust-project
 cd rust-project
 ```
 3. Initialize a git repo:
 
-```
+```bash
 git init
 ```
 
@@ -34,7 +34,7 @@ git init
     git init initializes a folder as an empty git repository. This basically adds a "hidden" .git folder that houses everything a git repo needs.
 
 4. Create a README.md File:
-```
+```bash
 echo "# Rust Starter Project" > README.md
 echo "# Tutorial Link [Here](https://mthornton1133.github.io/comp423-course-notes/tutorials/rust-setup/)" >> README.md
 git add README.md
@@ -49,16 +49,16 @@ git commit -m "Initialized with a README"
     * **Description**: “A starter project for learning the Rust programming language”
     * **Visibility**: Public
 3. **Do not** initialize the project with a README, .gitignore, or license.
-4. Click Create Repository.
+4. Click **Create Repository**.
 
 ### Step 3: Link your Local Repo to GitHub:
-1. Add GitHub repo as remote, replace your-username with your actual GitHub username:
-```
+1. Add GitHub repo as remote, replace `<your-username>` with your actual GitHub username:
+```bash
 git remote add origin https://github.com/<your-username>/rust-project.git
 ```
 2. Check your default branch name with the subcommand git branch. If it's not main, rename it to main with the following command: `git branch -M main`. Old versions of git choose the name master for the primary branch, but these days main is the standard primary branch name.
 3. Push your local commits to the GitHub repository:
-```
+```bash
 git push --set-upstream origin main
 ```
 4.  Back in your web browser, refresh your GitHub repository to see that the same commit you made locally has now been pushed to remote. You can use `git log` locally to see the commit ID and message which should match the ID of the most recent commit on GitHub. This is the result of pushing your changes to your remote repository.
@@ -73,7 +73,7 @@ git push --set-upstream origin main
 2. Install the **Dev Containers** extension for VS Code. This is located on the left column.
 3. Create a `.devcontainer` directory in the root of your project with the following file inside this “hidden” directory: `.devcontainer/devcontainer.json`
 4. Place the following code inside this newly created file: 
-```
+```json
 {
     "name": "Rust Project",
     "image": "mcr.microsoft.com/devcontainers/rust:latest",
@@ -105,16 +105,21 @@ git push --set-upstream origin main
 
 ## Part 3: Creating Your Rust Project:
 1. Next we need to create our Rust Project. In the terminal type the following code:
-```
+```bash
 cargo new hello-comp423 --vcs none
 cd hello-comp423
 ```
-2. The previous code created our rust project without creating it's VCS and then we switch into this newly created project. Navigate to the `src/main.rs` file and open it. Change the contents of the `println` function to say “Hello COMP423”
+2. The previous code created our rust project without creating it's VCS and then we switch into this newly created project. Navigate to the `src/main.rs` file and open it. Change the contents of the `println` function to say “Hello COMP423”. It should look like this:
+```rust
+fn main() {
+    println!("Hello COMP423");
+}
+```
 3. To print the contents there are two methods:
-    * Use `cargo build` in the terminal. This compiles an executable file but does not run it. To run it do `./target/debug/hello-comp423`. Note this is similar to using C in COMP 211 and running `gcc project-name` and it creates the executable a.out and to run the file you must type `./a.out`. The `cargo build` command is the compile part (`gcc project-name`) and using the ./ at the file location runs it.
+    * Use `cargo build` in the terminal. This compiles an executable file but does not run it. To run it do `./target/debug/hello-comp423`. Note this is similar to using C in COMP 211 and running `gcc <project-name>` and it creates the executable a.out and to run the file you must type `./a.out`. The `cargo build` command is the compile part (`gcc <project-name>`) and using the ./ at the file location runs it.
     * Alternatively, the command `cargo run` (in terminal) does both in one step simplifying the process. Both ways will print "Hello COMP423" in the terminal.
 4. If you would like to save changes simply follow the git basics. The commands below pushes your changes so you can view them on GitHub:
-```
+```bash
 git add .
 git commit -m "Followed Rust Tutorial and can print a line"
 git push -u origin main
